@@ -7,13 +7,13 @@ jobs:
   pr-comment:
     runs-on: ubuntu-latest
     steps:
-      - name: PR comment check
-        if: ${{ github.event.issue.pull_request }}  # PR 관련 이벤트인 경우 실행
-        run: echo "This is a pull request comment: ${{ github.event.issue.pull_request }}"
+      - name: Check if this is a PR comment
+        if: ${{ github.event.issue.pull_request != null }}  # Null 값 검사 추가
+        run: echo "This is a PR comment: ${{ github.event.issue.pull_request }}"
 
   issue-comment:
     runs-on: ubuntu-latest
     steps:
-      - name: Issue comment check
-        if: ${{ !github.event.issue.pull_request }}  # PR 관련 이벤트가 아닌 경우 실행
-        run: echo "This is an issue comment: ${{ github.event.issue.pull_request }}"
+      - name: Check if this is an issue comment
+        if: ${{ github.event.issue.pull_request == null }}  # Null 값 검사
+        run: echo "This is an issue comment."
