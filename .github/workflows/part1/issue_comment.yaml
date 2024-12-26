@@ -11,7 +11,7 @@ jobs:
         if: ${{ github.event.issue.pull_request != null }}  # Null 값 검사 추가
         run: echo "This is a PR comment: ${{ github.event.issue.pull_request }}"
 
-  issue-comment:
+  issue-comment:  # 수정: `pr-comment`와 동일한 레벨로 위치
     runs-on: ubuntu-latest
     steps:
       - name: Check if this is an issue comment
