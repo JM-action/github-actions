@@ -1,7 +1,7 @@
 name: issue-commnet-workflow
 on: issue_comment
 
-job:
+jobs:
   pr-comment:
     if: ${{github.event.issue.pull_request}}
     runs-on: ubuntu-lastest
