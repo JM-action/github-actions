@@ -1,17 +1,19 @@
-name: issue-commnet-workflow
-on: issue_comment
+name: issue-comment-workflow
+
+on:
+  issue_comment:
 
 jobs:
   pr-comment:
-    if: ${{github.event.issue.pull_request}}
     runs-on: ubuntu-latest
     steps:
-    - name: pr comment
-      run: echo ${{github.event.issue.pull_request}}
+      - name: PR comment check
+        if: ${{ github.event.issue.pull_request }}  # PR 관련 이벤트인 경우 실행
+        run: echo "This is a pull request comment: ${{ github.event.issue.pull_request }}"
 
-    issue-comment:
-    if: ${{ !github.event.issue.pull_request}}
+  issue-comment:
     runs-on: ubuntu-latest
     steps:
-    - name: issue comment
-      run: echo ${{github.event.issue.pull_request}}
+      - name: Issue comment check
+        if: ${{ !github.event.issue.pull_request }}  # PR 관련 이벤트가 아닌 경우 실행
+        run: echo "This is an issue comment: ${{ github.event.issue.pull_request }}"
