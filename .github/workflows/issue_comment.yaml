@@ -1,19 +1,17 @@
 name: issue-comment-workflow
-
-on:
-  issue_comment:
+on: issue_comment
 
 jobs:
   pr-comment:
+    if: ${{ github.event.issue.pull_request}}
     runs-on: ubuntu-latest
     steps:
-      - name: Check if this is a PR comment
-        if: ${{ github.event.issue.pull_request }}  # Null 값 검사 추가
-        run: echo "This is a PR comment: ${{ github.event.issue.pull_request }}"
-
-  issue-comment:  # 수정: `pr-comment`와 동일한 레벨로 위치
+    - name: pr comment
+      run : echo ${{ github.event.issue.pull_request}}
+  
+  issue-comment:
+    if: ${{ !github.event.issue.pull_request}}
     runs-on: ubuntu-latest
     steps:
-      - name: Check if this is an issue comment
-        if: ${{ !github.event.issue.pull_request }}  # Null 값 검사
-        run: echo "This is an issue comment."
+    - name: issue comment
+      run : echo ${{ github.event.issue.pull_request}}
