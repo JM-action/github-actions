@@ -1,4 +1,4 @@
-nmae: context
+name: context
 on: workflow_dispatch
 
 jobs:
