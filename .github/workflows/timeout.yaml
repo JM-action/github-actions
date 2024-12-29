@@ -10,9 +10,9 @@ jobs:
       run: |
         count=0
         while ture; do
-         echo "seconds: $count"
-         count=$((count+1))
-         sleep 1
-      done
+          echo "seconds: $count"
+          count=$((count+1))
+          sleep 1
+        done
     - name: echo
       run: echo hello
