@@ -3,10 +3,10 @@ name: Run Selenium Tests
 on:
   push:
     branches:
-      - main  # main 브랜치로 푸시될 때 실행
+      - master  # main 브랜치로 푸시될 때 실행
   pull_request:
     branches:
-      - main  # main 브랜치로의 PR이 생성될 때 실행
+      - master  # main 브랜치로의 PR이 생성될 때 실행
 
 jobs:
   test:
@@ -44,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: test-report
-        path: report.html
+        path: report.html 
