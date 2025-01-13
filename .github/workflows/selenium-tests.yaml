@@ -3,10 +3,10 @@ name: Run Selenium Tests
 on:
   push:
     branches:
-      - master  # main 브랜치로 푸시될 때 실행
+      - main  # main 브랜치로 푸시될 때 실행
   pull_request:
     branches:
-      - master  # main 브랜치로의 PR이 생성될 때 실행
+      - main  # main 브랜치로의 PR이 생성될 때 실행
 
 jobs:
   test:
